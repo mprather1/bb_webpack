@@ -1,21 +1,23 @@
 const webpack = require("webpack");
+const path = require("path");
 
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: __dirname + "/app/index.html",
+  template: path.join(__dirname, 'app', 'index.html'),
   filename: 'index.html',
   inject: 'body'
 });
 
-var path = {
-  ENTRY: "./app/main.js",
+var paths = {
+  ENTRY: path.join(__dirname, 'app', 'main.js'),
   OUTPUT_FILENAME: "bundle.js",
-  OUTPUT_PATH: __dirname + "/dist"
+  OUTPUT: path.join(__dirname, "dist"),
+  APP: path.join(__dirname, 'app')
 };
 
 module.exports = {
   entry: [
-    path.ENTRY
+    paths.ENTRY
   ],
   resolve: {
     alias: {
@@ -24,12 +26,12 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.html/, include: __dirname + '/app', loader: "underscore-template-loader"}
+      {test: /\.html/, include: paths.APP, loader: "underscore-template-loader"}
     ]
   },
   output: {
-    filename: path.OUTPUT_FILENAME,
-    path: path.OUTPUT_PATH
+    filename: paths.OUTPUT_FILENAME,
+    path: paths.OUTPUT
   },
   plugins: [
     HtmlWebpackPluginConfig,
