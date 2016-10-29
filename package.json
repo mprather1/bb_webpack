@@ -11,6 +11,8 @@
   "dependencies": {
     "backbone.marionette": "^3.1.0",
     "html-webpack-plugin": "^2.22.0",
+    "jshint": "^2.9.4",
+    "jshint-loader": "^0.8.3",
     "underscore-template-loader": "^0.7.3",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.1"
