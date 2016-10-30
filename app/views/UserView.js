@@ -4,7 +4,6 @@ String.prototype.capitalizedFirstLetter = function(){
 
 var UserView = Backbone.Marionette.View.extend({
   initialize: function(){
-    console.log(this.model.attributes)
   },
   tagName: 'tr',
   template: require("../templates/user-row-template.html"),

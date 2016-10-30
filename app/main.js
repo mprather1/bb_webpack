@@ -16,10 +16,10 @@ var users = new Users([
 
 var pageView = new PageView({
  collection: users
-})
+});
 
 var directory = new Marionette.Application({
   region: "#main"
 });
 
-directory.showView(pageView)
+directory.showView(pageView);

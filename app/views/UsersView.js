@@ -7,6 +7,6 @@ var UsersView = Backbone.Marionette.CollectionView.extend({
   //   this.collection.setSorting('lastName', -1)
   //   this.collection.fullCollection.sort();
   // }
-})
+});
 
 module.exports = UsersView;

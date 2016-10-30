@@ -1,9 +1,10 @@
 var UsersFormView = Backbone.Marionette.View.extend({
   template: require('../templates/users-form-template.html'),
   initialize: function(){
-    // this.listenTo(Backbone, 'form:submit', this.submitUsersForm)
+    this.listenTo(Backbone, 'form:submit', this.submitUsersForm);
   },
   submitUsersForm: function(){
+    console.log('submit');
     var userAttrs = {
       firstName: $('#firstName_input').val(),
       lastName: $('#lastName_input').val(),
@@ -15,9 +16,9 @@ var UsersFormView = Backbone.Marionette.View.extend({
       this.model.save();
       this.collection.add(this.model);
       // Backbone.Validation.unbind(this);
-      // Backbone.trigger('form:cancel')
+      Backbone.trigger('form:cancel');
     // }
   }
-})
+});
 
 module.exports = UsersFormView;

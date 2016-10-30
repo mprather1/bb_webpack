@@ -1,5 +1,5 @@
-var User = require("../models/User")
-var UsersFormView = require("./UsersFormView")
+var User = require("../models/User");
+var UsersFormView = require("./UsersFormView");
 
 var FormView = Backbone.Marionette.View.extend({
   tagName: 'div',
@@ -9,10 +9,10 @@ var FormView = Backbone.Marionette.View.extend({
     submit: '.submit-button',
     cancel: '.cancel-button'
   },
-  // events: {
-  //   'click @ui.submit': "submitForm",
-  //   'click @ui.cancel': 'cancelForm'
-  // },
+  events: {
+    'click @ui.submit': "submitForm",
+    'click @ui.cancel': 'cancelForm'
+  },
   regions: {
     body: {
       el: 'form',
@@ -23,16 +23,16 @@ var FormView = Backbone.Marionette.View.extend({
     this.showChildView('body', new UsersFormView({
       collection: this.collection,
       model: new User()
-    }))
+    }));
   },
-  // submitForm: function(e){
-  //   e.preventDefault();
-  //   Backbone.trigger('form:submit')
-  // },
-  // cancelForm: function(e){
-  //   e.preventDefault();
-  //   Backbone.trigger('form:cancel')
-  // }
+  submitForm: function(e){
+    e.preventDefault();
+    Backbone.trigger('form:submit');
+  },
+  cancelForm: function(e){
+    e.preventDefault();
+    Backbone.trigger('form:cancel');
+  }
 });
 
 module.exports = FormView;

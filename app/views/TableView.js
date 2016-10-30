@@ -1,10 +1,10 @@
 var UsersView = require("./UsersView");
 var TableHeader = require("./TableHeader");
-var TableFooter = require("./TableFooter")
+var TableFooter = require("./TableFooter");
 
 var TableView = Backbone.Marionette.View.extend({
   initialize: function(){
-    this.listenTo(Backbone, 'sort:users', this.sortUsers)
+    // this.listenTo(Backbone, 'sort:users', this.sortUsers)
   },
   tagName: 'div',
   className: 'container-fluid',
@@ -25,7 +25,7 @@ var TableView = Backbone.Marionette.View.extend({
   },
   onRender: function(){
     this.showChildView('head', new TableHeader({
-    }))
+    }));
     this.showChildView('body', new UsersView({
       collection: this.collection
     }));
