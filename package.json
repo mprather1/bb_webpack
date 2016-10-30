@@ -4,7 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "webpack-dev-server --host 0.0.0.0 --port 8000 --inline"
+    "test": "webpack --watch",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",

@@ -6,7 +6,6 @@ var UserView = Backbone.Marionette.View.extend({
   tagName: 'tr',
   template: require("../templates/user-template.html"),
   initialize: function(){
-    console.log(this.model.attributes)
   },
   serializeData: function(){
     return {

@@ -1,5 +1,6 @@
 var UsersView = require("./UsersView");
 var TableHeader = require("./TableHeader")
+var TableFooter = require("./TableFooter");
 
 var TableView = Backbone.Marionette.View.extend({
   tagName: 'div',
@@ -13,6 +14,10 @@ var TableView = Backbone.Marionette.View.extend({
     body: {
       el: 'tbody',
       replaceElement: true
+    },
+    footer: {
+      el: '#panel-buttons',
+      replaceElement: true
     }
   },
   onRender: function(){
@@ -22,6 +27,9 @@ var TableView = Backbone.Marionette.View.extend({
     this.showChildView('head', new TableHeader({
       
     }));
+    this.showChildView('footer', new TableFooter({
+      
+    }))
   }
 });
 
