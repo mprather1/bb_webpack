@@ -1,13 +1,13 @@
 var Marionette = require('marionette');
 var User = require("./models/User");
 var Users = require("./collections/Users");
-var TableView = require("./views/TableView");
+var PageView = require("./views/PageView");
 
 var users = new Users();
 users.fetch();
 
-var tableView = new TableView({
+var pageView = new PageView({
   collection: users
 });
 
-$('body').html(tableView.render().el);
+$('body').html(pageView.render().el);
