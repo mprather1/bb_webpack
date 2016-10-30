@@ -10,9 +10,15 @@
   "license": "ISC",
   "dependencies": {
     "backbone.marionette": "^3.1.0",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-validator": "^2.21.0",
     "html-webpack-plugin": "^2.22.0",
     "jshint": "^2.9.4",
     "jshint-loader": "^0.8.3",
+    "mongoose": "^4.6.5",
+    "mongoose-paginate": "^5.0.3",
+    "node-mongo-seeds": "^2.3.0",
     "underscore-template-loader": "^0.7.3",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.1"

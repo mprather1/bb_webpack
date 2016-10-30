@@ -1,6 +1,6 @@
 var UserView = require("./UserView");
 var UsersView = Backbone.Marionette.CollectionView.extend({
-  tagName: 'ul',
+  tagName: 'tbody',
   childView: UserView
 });
 
