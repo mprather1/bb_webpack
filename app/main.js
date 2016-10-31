@@ -1,3 +1,4 @@
+var Backbone = require("backbone");
 var Marionette = require('marionette');
 var User = require("./models/User");
 var Users = require("./collections/Users");
