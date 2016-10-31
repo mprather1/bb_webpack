@@ -1,5 +1,5 @@
 var TableView = require("./TableView")
-
+var SidebarView = require("./Sidebar")
 var PageView = Backbone.Marionette.View.extend({
   tagName: "div",
   className: 'container-fluid',
@@ -8,17 +8,17 @@ var PageView = Backbone.Marionette.View.extend({
     body: {
       el: '#table-view'
     },
-    // sidebar: {
-    //   el: '#sidebar-view'
-    // },
+    sidebar: {
+      el: '#sidebar-view'
+    },
   },
   onRender: function(){
     this.showChildView('body', new TableView({
       collection: this.collection
     }));
-    // this.showChildView('sidebar', new SidebarView({
-    //   collection: this.collection
-    // }));
+    this.showChildView('sidebar', new SidebarView({
+      collection: this.collection
+    }));
   }
 });
 

@@ -11,4 +11,8 @@ var pageView = new PageView({
   collection: users
 });
 
-$('body').html(pageView.render().el);
+CorporateDirectory = new Marionette.Application({
+  region: '#main'
+})
+
+CorporateDirectory.showView(pageView)
