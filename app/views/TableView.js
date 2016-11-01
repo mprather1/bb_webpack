@@ -6,6 +6,9 @@ var TableView = Backbone.Marionette.View.extend({
   tagName: 'div',
   className: 'container-fluid',
   template: require('../templates/table-template.html'),
+  initialize: function(){
+    this.listenTo(Backbone, 'sort:users', this.sortUsers)
+  },
   regions: {
     head: {
       el: 'thead',
@@ -30,7 +33,21 @@ var TableView = Backbone.Marionette.View.extend({
     this.showChildView('footer', new TableFooter({
       
     }))
-  }
+  },
+  sortUsers: function(flag){
+    var name = flag.target.id;
+    if (this.sortFlag === false){
+      this.sortFlag = true;
+      this.collection.setSorting(name, -1)
+      this.collection.fullCollection.sort();
+      this.collection.getFirstPage();
+    } else {
+      this.sortFlag = false;
+      this.collection.setSorting(name, 1)
+      this.collection.fullCollection.sort();
+      this.collection.getFirstPage()
+    }
+  },
 });
 
 module.exports = TableView;

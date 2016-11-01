@@ -3,7 +3,7 @@ var TableHeader = Backbone.Marionette.View.extend({
   className: 'thead thead-default',
   template: require("../templates/table-header-template.html"),
   events: {
-    // 'click .table-header': 'sortTable',
+    'click .table-header': 'sortTable',
     'mouseover .table-header': 'mouseoverFunc',
     'mouseout .table-header': 'mouseoutFunc'
   },
@@ -13,9 +13,9 @@ var TableHeader = Backbone.Marionette.View.extend({
   mouseoutFunc: function(event){
     $(event.currentTarget).css("background-color", "#f5f5f5");
   },
-  // sortTable: function(e){
-  //   Backbone.trigger('sort:users', e);
-  // }
+  sortTable: function(e){
+    Backbone.trigger('sort:users', e);
+  }
 });
 
 module.exports = TableHeader;
