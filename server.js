@@ -4,6 +4,7 @@ var express = require("express"),
     validator = require('express-validator'),
     config = require("./_config"),
     User = require("./db/models/User"),
+    Facility = require("./db/models/Facility"),
     mongoose = require('mongoose'),
     environment = app.settings.env || 'development',
     connectionString = config.mongoURI[environment];
@@ -179,7 +180,17 @@ router.route('/users/:user_id')
       res.json({ message: 'Successfully deleted user...', 'removed': user });
     });
   });
-
+  
+router.route('/facilities')
+    .get(function(req, res){
+      Facility.find(function(err, response){
+      if (err){
+        res.send(err);
+      }
+      res.json(response);
+    });
+  });
+    
 app.use('/api', router);
 
 var server = app.listen(port, function(){

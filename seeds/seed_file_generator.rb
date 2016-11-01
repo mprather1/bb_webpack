@@ -20,3 +20,22 @@ file.puts('[')
 end
 file.puts("]")
 end
+
+File.open('seeds/facilites.json', 'w') do |file|
+file.puts('[')  
+150.times do
+  @facility_name = Faker::Address.city
+  @facility_number = Faker::Number.number(3)
+  @phone_number = Faker::Number.number(10)
+  @location = Faker::Address.city
+
+  my_hash = {
+    facility_name: @facility_name,
+    facility_number: @facility_number,
+    phone: @phone_number,
+    location: @location  
+  }
+  file.puts(JSON.generate(my_hash) + ",")
+end
+file.puts("]")
+end

@@ -10,20 +10,20 @@ var SidebarView = Backbone.Marionette.View.extend({
   ui: {
     show: '.show-button',
   },
-  events: {
-    'click @ui.show': 'showForm'
-  },
+  // events: {
+  //   'click @ui.show': 'showForm'
+  // },
   regions: {
     body: {
       el: '.sidebar',
       replaceElement: true
     }
   },
-  showForm: function(){
-    this.showChildView('body', new FormView({
-      collection: this.collection
-    }));
-  }
+  // showForm: function(){
+  //   this.showChildView('body', new FormView({
+  //     collection: this.collection
+  //   }));
+  // }
 });
 
 module.exports = SidebarView;

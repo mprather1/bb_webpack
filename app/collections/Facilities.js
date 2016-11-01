@@ -1,9 +1,10 @@
-var User = require("../models/User");
+var Facility = require("../models/Facility");
+
 var PageableCollection = require("backbone.paginator");
-var Users = Backbone.PageableCollection.extend({
-  url: 'http://68.103.65.157:8000/api/users',
+ var Facilities = Backbone.PageableCollection.extend({
+  url: 'http://68.103.65.157:8000/api/facilities',
   mode: 'client',
-  model: User,
+  model: Facility,
   state: {
     pageSize: 14,
     sortKey: 'id',
@@ -13,6 +14,6 @@ var Users = Backbone.PageableCollection.extend({
     totalPages: null,
     totalRecords: null,
   },
-});
+}); 
 
-module.exports = Users;
+module.exports = Facilities;
