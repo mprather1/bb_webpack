@@ -3,7 +3,11 @@ var FormView = require("./FormView");
 var AdminView = Backbone.Marionette.View.extend({
   tagName: 'div',
   template: require("../templates/admin-template.html"),
-  initialize: function(){
+  initialize: function(options){
+    this.users = options.users,
+    this.facilities = options.facilities,
+    this.devices = options.devices
+    
     this.listenTo(Backbone, 'form:cancel', this.clearFunction)
   },
   clear: _.template(' '),
@@ -13,15 +17,19 @@ var AdminView = Backbone.Marionette.View.extend({
     }
   },
   ui: {
-    newUserButton: '.new-user-btn'
+    newUserButton: '.new-form-btn'
   },
   events: {
-    'click @ui.newUserButton': 'showUserForm'
+    'click @ui.newUserButton': 'showForm'
   },
-  showUserForm: function(){
+  showForm: function(e){
     this.showChildView("body", new FormView({
-      heading: "Create new user",
-      collection: this.collection
+      // heading: "Create new user",
+      // collection: this.collection,
+      users: this.users,
+      facilities: this.facilities,
+      formType: e.target.getAttribute('data-form-type'),
+      heading: e.target.getAttribute('data-heading'),
     }));
   },
   clearFunction: function(){

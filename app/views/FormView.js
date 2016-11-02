@@ -1,11 +1,16 @@
 var UsersFormView = require("./UsersFormView");
+var FacilitiesFormView = require("./FacilitiesFormView");
 
 var FormView = Backbone.Marionette.View.extend({
   tagName: 'div',
   className: 'container-fluid',
   template: require("../templates/form-template.html"),
   initialize: function(options){
-    this.heading = this.options.heading
+    this.heading = options.heading,
+    this.formType = options.formType,
+    this.users = options.users,
+    this.facilities = options.facilities
+    console.log(this.users)
   },
   serializeData: function(){
     return {
@@ -27,9 +32,16 @@ var FormView = Backbone.Marionette.View.extend({
     }
   },
   onRender: function(){
-    this.showChildView('body', new UsersFormView({
-      collection: this.collection,
-    }))
+    if (this.formType === 'user'){
+      this.showChildView('body', new UsersFormView({
+        collection: this.users,
+      }))
+    }
+    if (this.formType === 'facility'){
+      this.showChildView('body', new FacilitiesFormView({
+        collection: this.facilities,
+      }))
+    }
   },
   submitForm: function(e){
     e.preventDefault();
