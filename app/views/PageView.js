@@ -62,7 +62,8 @@ var PageView = Backbone.Marionette.View.extend({
   
   showAdmin: function(){
     this.showChildView('body', new PanelView({
-      heading: "Admin"
+      heading: "Admin",
+      collection: this.users
   }))
   }
   

@@ -62,7 +62,9 @@ var PanelView = Backbone.Marionette.View.extend({
       }))  
     }
     if (this.heading === "Admin"){
-      this.showChildView('main', new AdminView()); 
+      this.showChildView('main', new AdminView({
+        collection: this.collection
+      })); 
     }
     if(this.heading != "Admin" && this.heading != "Home"){
       this.showChildView('navbuttons', new TableFooter());

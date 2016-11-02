@@ -45,9 +45,11 @@ end
 
 # Create devices seed
 
-File.open('seeds/devices.json', 'w') do |file|
-file.puts('[')  
-150.times do
+File.open('seeds/devices.json', 'a') do |file|
+  
+file.puts('[') 
+
+50.times do
   @deviceType = 'iPad'
   @serialNumber = Faker::Number.number(10)
   @manufacturer = 'Apple'
@@ -59,5 +61,30 @@ file.puts('[')
   }
   file.puts(JSON.generate(my_hash) + ",")
 end
+50.times do
+  @deviceType = 'Samsung Galaxy Tab'
+  @serialNumber = Faker::Number.number(10)
+  @manufacturer = 'Samsung'
+
+  my_hash = {
+    deviceType: @deviceType,
+    serialNumber: @serialNumber,
+    manufacturer: @manufacturer  
+  }
+  file.puts(JSON.generate(my_hash) + ",")
+end
+50.times do
+  @deviceType = 'Samsung Galaxy S7'
+  @serialNumber = Faker::Number.number(10)
+  @manufacturer = 'Samsung'
+
+  my_hash = {
+    deviceType: @deviceType,
+    serialNumber: @serialNumber,
+    manufacturer: @manufacturer  
+  }
+  file.puts(JSON.generate(my_hash) + ",")
+end
+
 file.puts("]")
 end

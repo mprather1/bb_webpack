@@ -3,6 +3,10 @@ var FormView = require("./FormView");
 var AdminView = Backbone.Marionette.View.extend({
   tagName: 'div',
   template: require("../templates/admin-template.html"),
+  initialize: function(){
+    this.listenTo(Backbone, 'form:cancel', this.clearFunction)
+  },
+  clear: _.template(' '),
   regions: {
     body: {
       el: '.form-view'
@@ -16,8 +20,13 @@ var AdminView = Backbone.Marionette.View.extend({
   },
   showUserForm: function(){
     this.showChildView("body", new FormView({
-      heading: "Create new user"
+      heading: "Create new user",
+      collection: this.collection
     }));
+  },
+  clearFunction: function(){
+    var view = this.getRegion('body');
+    view.$el.html(' ');
   }
 });
 
