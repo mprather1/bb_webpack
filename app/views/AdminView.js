@@ -24,10 +24,9 @@ var AdminView = Backbone.Marionette.View.extend({
   },
   showForm: function(e){
     this.showChildView("body", new FormView({
-      // heading: "Create new user",
-      // collection: this.collection,
       users: this.users,
       facilities: this.facilities,
+      devices: this.devices,
       formType: e.target.getAttribute('data-form-type'),
       heading: e.target.getAttribute('data-heading'),
     }));

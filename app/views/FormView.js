@@ -1,5 +1,6 @@
 var UsersFormView = require("./UsersFormView");
 var FacilitiesFormView = require("./FacilitiesFormView");
+var DevicesFormView = require("./DevicesFormView");
 
 var FormView = Backbone.Marionette.View.extend({
   tagName: 'div',
@@ -9,8 +10,8 @@ var FormView = Backbone.Marionette.View.extend({
     this.heading = options.heading,
     this.formType = options.formType,
     this.users = options.users,
-    this.facilities = options.facilities
-    console.log(this.users)
+    this.facilities = options.facilities,
+    this.devices = options.devices
   },
   serializeData: function(){
     return {
@@ -42,6 +43,11 @@ var FormView = Backbone.Marionette.View.extend({
         collection: this.facilities,
       }))
     }
+    if (this.formType === 'device'){
+      this.showChildView('body', new DevicesFormView({
+        collection: this.devices,
+      }))
+    }    
   },
   submitForm: function(e){
     e.preventDefault();

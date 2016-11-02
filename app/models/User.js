@@ -18,7 +18,7 @@ var User = Backbone.Model.extend({
       minLength: 10,
       maxLength: 10
     }
-},
+  },
 });
 
 module.exports = User;

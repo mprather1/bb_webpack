@@ -3,7 +3,6 @@ var Facility = require("../models/Facility");
 var FacilitiesFormView = Backbone.Marionette.View.extend({
   template: require('../templates/facilities-form-template.html'),
   initialize: function(){
-    console.log(this.collection)
     this.model = new Facility();
     this.listenTo(Backbone, 'form:submit', this.submitFacilitiesForm);
     Backbone.Validation.bind(this, {
