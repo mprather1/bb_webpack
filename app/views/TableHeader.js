@@ -17,7 +17,7 @@ var TableHeader = Backbone.Marionette.View.extend({
     $(event.currentTarget).css("background-color", "#f5f5f5");
   },
   sortTable: function(e){
-    Backbone.trigger('sort:users', e);
+    Backbone.trigger('sort:collection', e);
   }
 });
 

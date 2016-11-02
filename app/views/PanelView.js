@@ -3,11 +3,13 @@ var FacilitiesView = require("./FacilitiesView");
 var DevicesView = require("./DevicesView");
 var AdminView = require("./AdminView")
 var TableHeader = require("./TableHeader");
+var TableFooter = require("./TableFooter")
 
 
 var PanelView = Backbone.Marionette.View.extend({
   initialize: function(options){
     this.heading = options.heading
+    this.listenTo(Backbone, 'sort:collection', this.sortCollection)
   },
   serializeData: function(){
     return {
@@ -18,6 +20,10 @@ var PanelView = Backbone.Marionette.View.extend({
   className: 'panel panel-primary',
   template: require("../templates/panel-template.html"),
   regions: {
+    main: {
+      el: '.panel-body',
+      replaceElement: false
+    },
     thead: {
       el: 'thead',
       replaceElement: true
@@ -56,9 +62,26 @@ var PanelView = Backbone.Marionette.View.extend({
       }))  
     }
     if (this.heading === "Admin"){
-      this.showChildView('tbody', new AdminView())  
-    } 
-  }
+      this.showChildView('main', new AdminView()); 
+    }
+    if(this.heading != "Admin" && this.heading != "Home"){
+      this.showChildView('navbuttons', new TableFooter());
+    }
+  },
+  sortCollection: function(flag){
+    var name = flag.target.id;
+    if (this.sortFlag === false){
+      this.sortFlag = true;
+      this.collection.setSorting(name, -1)
+      this.collection.fullCollection.sort();
+      this.collection.getFirstPage();
+    } else {
+      this.sortFlag = false;
+      this.collection.setSorting(name, 1)
+      this.collection.fullCollection.sort();
+      this.collection.getFirstPage()
+    }
+  },
 });
 
 module.exports = PanelView;
