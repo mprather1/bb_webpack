@@ -1,8 +1,8 @@
 var Facility = require("../models/Facility");
-
 var PageableCollection = require("backbone.paginator");
- var Facilities = Backbone.PageableCollection.extend({
-  url: 'http://68.103.65.157:8000/api/facilities',
+
+var Facilities = Backbone.PageableCollection.extend({
+  url: 'http://localhost:8000/api/facilities',
   mode: 'client',
   model: Facility,
   state: {
@@ -14,6 +14,6 @@ var PageableCollection = require("backbone.paginator");
     totalPages: null,
     totalRecords: null,
   },
-}); 
+});
 
-module.exports = Facilities;
+module.exports = Facilities

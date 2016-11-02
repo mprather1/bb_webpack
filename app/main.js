@@ -3,16 +3,22 @@ var Marionette = require('marionette');
 var User = require("./models/User");
 var Users = require("./collections/Users");
 var Facilities = require("./collections/Facilities");
+var Devices = require("./collections/Devices");
 var PageView = require("./views/PageView");
 var DirectoryRouter = require("./router")
+
 var users = new Users();
-users.fetch();
 var facilities = new Facilities();
-facilities.fetch()
+var devices = new Devices();
+
+users.fetch();
+facilities.fetch();
+devices.fetch();
 
 var pageView = new PageView({
-  collection: users,
-  facilities: facilities
+  users: users,
+  facilities: facilities,
+  devices: devices
 });
 
 var CorporateDirectory = new Marionette.Application({

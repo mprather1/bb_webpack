@@ -1,6 +1,7 @@
 require 'json'
 require 'faker'
 
+# Create Users seed
 File.open('seeds/users.json', 'w') do |file|
 file.puts('[')  
 150.times do
@@ -21,19 +22,40 @@ end
 file.puts("]")
 end
 
-File.open('seeds/facilites.json', 'w') do |file|
+# Create facilities seed
+
+File.open('seeds/facilities.json', 'w') do |file|
 file.puts('[')  
 150.times do
-  @facility_name = Faker::Address.city
-  @facility_number = Faker::Number.number(3)
+  @facilityName = Faker::Company.name
+  @facilityNumber = Faker::Number.number(3)
   @phone_number = Faker::Number.number(10)
-  @location = Faker::Address.city
+  @location = Faker::Address.city + ', ' + Faker::Address.state_abbr
 
   my_hash = {
-    facility_name: @facility_name,
-    facility_number: @facility_number,
+    facilityName: @facilityName,
+    facilityNumber: @facilityNumber,
     phone: @phone_number,
-    location: @location  
+    facilityLocation: @location  
+  }
+  file.puts(JSON.generate(my_hash) + ",")
+end
+file.puts("]")
+end
+
+# Create devices seed
+
+File.open('seeds/devices.json', 'w') do |file|
+file.puts('[')  
+150.times do
+  @deviceType = 'iPad'
+  @serialNumber = Faker::Number.number(10)
+  @manufacturer = 'Apple'
+
+  my_hash = {
+    deviceType: @deviceType,
+    serialNumber: @serialNumber,
+    manufacturer: @manufacturer  
   }
   file.puts(JSON.generate(my_hash) + ",")
 end

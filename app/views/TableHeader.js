@@ -1,7 +1,10 @@
 var TableHeader = Backbone.Marionette.View.extend({
   tagName: 'thead',
   className: 'thead thead-default',
-  template: require("../templates/table-header-template.html"),
+  // template: require("../templates/table-header-template.html"),
+  initialize: function(options){
+    this.template = options.template
+  },
   events: {
     'click .table-header': 'sortTable',
     'mouseover .table-header': 'mouseoverFunc',

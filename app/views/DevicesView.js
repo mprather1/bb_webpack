@@ -1,7 +1,7 @@
-var FacilityView = require("./FacilityView");
-var FacilitiesView = Backbone.Marionette.CollectionView.extend({
+var DeviceView = require("./DeviceView");
+var DevicesView = Backbone.Marionette.CollectionView.extend({
   tagName: 'tbody',
-  childView: FacilityView,
+  childView: DeviceView,
   initialize: function(){
     this.listenTo(Backbone, 'header:nextpage', this.nextPage),
     this.listenTo(Backbone, 'header:prevpage', this.prevPage)
@@ -22,4 +22,4 @@ var FacilitiesView = Backbone.Marionette.CollectionView.extend({
   } 
 });
 
-module.exports = FacilitiesView;
+module.exports = DevicesView;

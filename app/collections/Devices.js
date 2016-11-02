@@ -1,10 +1,10 @@
-var User = require("../models/User");
+var Device = require("../models/Device");
 var PageableCollection = require("backbone.paginator");
 
-var Users = Backbone.PageableCollection.extend({
-  url: 'http://localhost:8000/api/users',
+var Device = Backbone.PageableCollection.extend({
+  url: 'http://localhost:8000/api/devices',
   mode: 'client',
-  model: User,
+  model: Device,
   state: {
     pageSize: 14,
     sortKey: 'id',
@@ -16,4 +16,4 @@ var Users = Backbone.PageableCollection.extend({
   },
 });
 
-module.exports = Users
+module.exports = Device;

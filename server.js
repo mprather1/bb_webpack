@@ -5,6 +5,7 @@ var express = require("express"),
     config = require("./_config"),
     User = require("./db/models/User"),
     Facility = require("./db/models/Facility"),
+    Device = require("./db/models/Device"),
     mongoose = require('mongoose'),
     environment = app.settings.env || 'development',
     connectionString = config.mongoURI[environment];
@@ -184,6 +185,16 @@ router.route('/users/:user_id')
 router.route('/facilities')
     .get(function(req, res){
       Facility.find(function(err, response){
+      if (err){
+        res.send(err);
+      }
+      res.json(response);
+    });
+  });
+  
+router.route('/devices')
+    .get(function(req, res){
+      Device.find(function(err, response){
       if (err){
         res.send(err);
       }
