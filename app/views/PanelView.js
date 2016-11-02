@@ -8,7 +8,10 @@ var TableFooter = require("./TableFooter")
 
 var PanelView = Backbone.Marionette.View.extend({
   initialize: function(options){
-    this.heading = options.heading
+    this.users = options.users,
+    this.facilities = options.facilities,
+    this.devices = options.devices,
+    this.heading = options.heading,
     this.listenTo(Backbone, 'sort:collection', this.sortCollection)
   },
   serializeData: function(){
@@ -63,7 +66,9 @@ var PanelView = Backbone.Marionette.View.extend({
     }
     if (this.heading === "Admin"){
       this.showChildView('main', new AdminView({
-        collection: this.collection
+        users: this.users,
+        facilities: this.facilities,
+        devices: this.devices
       })); 
     }
     if(this.heading != "Admin" && this.heading != "Home"){
